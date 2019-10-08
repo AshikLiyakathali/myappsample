@@ -71,7 +71,7 @@ myCar.model = "Mustang";
 console.log(myCar.make);
 
 
-// Numbers Basics
+// 3. Numbers Basics
 
 var number = 12;
 console.log(number);
@@ -136,6 +136,48 @@ console.log(++number);
 console.log(number);
 
 
+// 4. String Basics
 
+var myName = 'Ashik';
+console.log(myName);
+var sentence = "He said Hi";
+console.log(sentence);
+var sentence = "He said \"Hi\"";
+console.log(sentence);
+var sentence = 'He said "Hi"';
+console.log(sentence);
+
+// to use these symbols in string we have to add backslash in front of it
+
+// concatenate strings
+
+var fullName = 'Ashik ' + 'Liyakathali';
+console.log(fullName);
+
+var sentence2 = 'My name is ' + fullName;
+console.log(sentence2);
+
+fullName += ' is my name.';
+console.log(fullName);
+
+
+// 5. Strings: [bracket notation]
+
+var firstName = "Ashik";
+console.log(firstName);
+
+console.log(firstName[0]);
+console.log(firstName[4]);
+console.log(firstName.length);
+console.log(firstName[firstName.length - 2]);
+
+// cant do this operation in js bcoz string is fixed
+// firstName[0] = "X";
+// console.log(firstName);
+
+//but a different string can be assigned to the same variable
+
+firstName = "Khalid";
+console.log(firstName);
 
 
