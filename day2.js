@@ -181,3 +181,95 @@ firstName = "Khalid";
 console.log(firstName);
 
 
+// 6. 20 String methods
+
+var stringOne = "Ashik Liyakathali is my name";
+var stringTwo = "Khalid is my friend";
+
+//charAt()
+
+console.log(stringOne.charAt(1));
+
+//charCodeAt()
+
+console.log(stringOne.charCodeAt(1));
+
+//concat()
+
+console.log(stringOne.concat(stringTwo));
+
+//endsWith()
+
+console.log(stringOne.endsWith("name"));
+console.log(stringTwo.endsWith("friend"));
+console.log(stringOne.endsWith("friend"));
+console.log(stringTwo.endsWith("name"));
+
+//fromCharCode()
+
+console.log(String.fromCharCode(115));
+
+
+//includes()
+
+console.log(stringOne.includes("name"));
+console.log(stringTwo.includes("name"));
+
+//indexOf()
+
+console.log(stringOne.indexOf("is"));
+
+//lastIndexOf()
+
+console.log(stringOne.lastIndexOf("name"));
+
+//match()
+
+console.log(stringTwo.match(/friend/g));
+
+//repeat()
+
+console.log(stringOne.repeat(3));
+
+//replace()
+
+console.log(stringOne.replace(/name/g, "NAME"));
+
+//search()
+
+console.log(stringOne.search("is"));
+
+//slice()
+
+console.log(stringOne.slice(2,4));
+
+//split()
+
+console.log(stringOne.split(" "));
+
+//startsWith()
+
+console.log(stringOne.startsWith("Ashik"));
+
+//substr()
+
+console.log(stringOne.substr(1, 4));
+
+//substring()
+
+console.log(stringOne.substring(1, 4));
+
+//toLowerCase()
+
+console.log(stringOne.toLowerCase());
+
+//toUpperCase()
+
+console.log(stringOne.toUpperCase());
+
+//trim()
+
+var stringThree = "    abc    "
+console.log(stringThree);
+console.log(stringThree.trim());
+
