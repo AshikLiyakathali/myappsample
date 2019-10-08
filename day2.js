@@ -273,3 +273,163 @@ var stringThree = "    abc    "
 console.log(stringThree);
 console.log(stringThree.trim());
 
+
+// 7. Functions
+
+function square(number) {
+    return number * number;
+}
+
+console.log(square(5));
+
+// global scope and local scope
+
+var someVar = "Hat";
+function myFun() {
+ var someVar = "Shoes";
+ console.log(someVar);
+}
+
+myFun();
+console.log(someVar);
+
+//nesting function
+
+function addSquares(a, b) {
+    function square(x) {
+        return x * x;
+    }
+    return square(a) + square(b);
+}
+
+console.log(addSquares(1,3));
+
+
+// 8. Hoisting
+
+//console.log(notDeclared); //gives error because it is not defined
+
+console.log(definedLater); // if we use it before it is defined it shows undefined
+var definedLater;
+definedLater = 'I am defined';
+console.log(definedLater); //if we use it after it is defined it displays the output
+
+console.log(definedSimultanesouly); //it shows undefined
+var definedSimultanesouly = 'I am defined';
+console.log(definedSimultanesouly); //displays the output
+
+doSomethingElse();
+function doSomethingElse() {
+    console.log('I did it');
+}
+
+//functionVar(); //it gives error because function is declared as variable
+var functionVar = function() {
+    console.log('I did it');
+}
+functionVar(); //it displays output because variable is defined now.
+
+
+// 9. Comparison operators & If Else
+
+//if
+var sample = true;
+
+if (sample) {
+    console.log("Sample is true")
+}
+//prints the output because the variable is true
+
+var sample = false;
+
+if (sample) {
+    console.log("Sample is true")
+}
+// doesnt perform the operation as variable is false
+
+// if else
+
+var sample = true;
+
+if (sample) {
+    console.log("Sample is true")
+}
+else {
+    console.log("Sample is false")
+}
+
+var sample = false;
+
+if (sample) {
+    console.log("Sample is true")
+}
+else {
+    console.log("Sample is false")
+}
+
+//comparison operators:
+// > < <= >= == !=
+
+var age = 18;
+
+if (age >= 18) {
+    console.log("Adult");
+}
+else {
+    console.log("Child");
+}
+
+//else if
+
+var age = 1;
+
+if (age >= 18) {
+    console.log("Adult");
+}
+else if (age < 18) {
+    console.log("Child");
+}
+else if (age < 3) {
+    console.log("baby");
+}
+// once a condition is met it does not check others. so we can to give preference to statements
+
+var age = 1;
+
+if (age >= 18) {
+    console.log("Adult");
+}
+else if (age < 3) {
+    console.log("baby");
+}
+else if (age < 18) {
+    console.log("Child");
+}
+
+var age = 18
+
+if (age == 18) {
+    console.log("Adult");
+}
+else {
+    console.log("Child");
+}
+
+var age = 17
+
+if (age == 18) {
+    console.log("Adult");
+}
+else {
+    console.log("Child");
+}
+
+var age = 10;
+
+if (age != 18) {
+    console.log("Not Adult");
+}
+
+
+
+
