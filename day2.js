@@ -708,7 +708,96 @@ deepCopy[0].push("is great");
 console.log(deepArray[0], deepCopy[0])
 
 
+// 18. Random numbers & parseInt 
+
+console.log(Math.random());
+
+console.log(Math.floor(Math.random() * 20));
+console.log(Math.ceil(Math.random() * 20));
+
+function randomRange(min, max) {
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+  
+console.log(randomRange(1, 9));
+
+console.log(parseInt("007", 2));
+console.log(parseInt("abc", 2));
+console.log(parseInt("11", 2));
 
 
+// 19. For Loops
 
+// for ([initialization]; [condition]; [final-expression]) {}
+
+var ourArray = [];
+for (var i = 0; i < 5; i++) {
+  ourArray.push(i);
+}
+console.log(ourArray);
+
+var ourArray = [];
+for (var i = 0; i < 5; i++) {
+  if (i > 2) break;
+  ourArray.push(i);
+}
+console.log(ourArray);
+
+var arr = [10,9,8,7,6];
+for (var i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+
+// nested for loops -  a for loop inside a for loop 
+var arr = [
+ [1,2], [3,4], [5,6]
+];
+for (var i=0; i < arr.length; i++) {
+ for (var j=0; j < arr[i].length; j++) {
+   console.log(arr[i][j]);
+ }
+}
+
+
+// 20. While, Do While
+
+// both r similar. while checks condition at beginning. do while does it in end
+
+var n = 0;
+
+while (n < 5) {
+  n++;
+  console.log("n = " + n);
+}
+
+var n = 0;
+// using continue to stop commands below continue
+while (n < 5) {
+  n++;
+  if (n == 3) continue;
+  console.log("n = " + n);
+}
+
+var n = 0;
+
+//using break to exit loop
+
+while (n < 5) {
+    n++;
+    if (n == 3) break;
+    console.log("n = " + n);
+  }
+
+//do while
+  
+  var i = 0;
+  
+  do {
+    i++;
+    console.log("i = " + i);
+  } while (i < 5);
+  
+// use the command below  to avoid infinite loops
+// &turn_off_js=true
 
