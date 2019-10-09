@@ -431,5 +431,107 @@ if (age != 18) {
 }
 
 
+// 10. == & === Operators
+// == is abstract quality
+// === is strict equality
+
+console.log(3 == "3"); // it shows true because string 3 is converted to number 3 and then compares.
+console.log(3 === "3"); // it shows false because the data types are diferent
+
+console.log(true == '1');
+console.log(true === '1');
+
+console.log("This is a string" == new String("This is a string"));
+console.log("This is a string" === new String("This is a string"));
+
+//better to use === to increase clarity and avoids confusion
 
 
+// 11. Null vs undefined
+
+var test
+console.log(test)
+
+test = null
+
+console.log(test)
+
+console.log(typeof null)
+console.log(typeof undefined)
+
+console.log(null === undefined)
+console.log(null == undefined)
+
+console.log(null === null)
+console.log(null == null)
+
+console.log(!null)
+console.log(!!null)
+
+console.log(1 + null)
+console.log(1 + undefined)
+
+
+// 12. Logical Operators & Short circuit evaluation
+
+// Logical AND is &&
+// Logical OR is ||
+
+var num = 7;
+if (num > 5) {
+    if (num < 10) {
+        console.log("Unicycle")
+    }
+}
+
+if (num > 5 && num <10){
+    console.log("Unicycle")
+}
+
+if (num > 5 || num <10){
+    console.log("Unicycle")
+}
+
+// short circuit evaluation is when one condition is met it doesnot have to check the other
+// Like if and is false then no need to check. answer will be false
+// if or is true then no need to check. answer will be true
+
+if (4 > 5 && 5 > 6) {
+    console.log("high")
+}
+else{
+    console.log("low")
+}
+// in this example it doesnot check the second condition because first one is false.
+
+//We can us it for functions also
+
+var test = true;
+var isTrue = function() {
+    console.log('Test is true');
+};
+var isFalse = function() {
+    console.log('Test is false');
+};
+
+if (test) {
+  //  isTrue();
+}
+
+(test && isTrue());
+
+test = false;
+if(!test) {
+    isFalse();
+}
+
+(test || isFalse());
+
+//short circuit can be used to assign default value in a function
+
+function drink(name) {
+    name = name || 'bar';
+    console.log("My name is " + name);
+}
+drink();
+drink("Ashik");
