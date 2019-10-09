@@ -535,3 +535,180 @@ function drink(name) {
 }
 drink();
 drink("Ashik");
+
+
+// 13. Ternary operator
+// condition ? expr 1 : expr 2
+// if condition is true then it returns expr 1 else it returns expr 2
+
+var age = 15;
+if (age >=18 ) {
+    console.log("Adult");
+}
+else{
+    console.log("Not Adult");
+}
+
+var age = 19;
+console.log((age >= 18) ? "Adult" : "Not Adult");
+
+var stop;
+age > 18 ? (
+    console.log("Allowed"),
+    stop = false
+) : (
+    console.log("Not Allowed"),
+    stop = true
+);
+
+// we can have a ternary operation inside a ternary operation
+
+var firstCheck =  false,
+secondCheck = false,
+access = firstCheck ? "Not Allowed" : secondCheck ? "Not Allowed" : "Allowed";
+
+console.log(access);
+
+
+// 14. Switch Statements
+
+let day;
+switch (new Date().getDay()) {
+    case 0:
+    	day = "Sunday";
+        break;
+    case 1:
+    	day = "Monday";
+        break;
+    case 2:
+    	day = "Tuesday";
+        break;
+    case 3:
+    	day = "Wednesday";
+        break;
+    case 4:
+    	day = "Thursday";
+        break;
+    case 5:
+    	day = "Friday";
+        break;
+    case 6:
+    	day = "Saturday";
+}
+console.log(day)
+
+//if we dont use break all the remaining cases will be executed
+
+var Animal = 'Spoon';
+switch (Animal) {
+  case 'Cow':
+  case 'Giraffe':
+  case 'Dog':
+  case 'Pig':
+    console.log('This animal will go on Noah\'s Ark.');
+    Break;
+  case 'Spoon':
+    console.log('A spoon is not an animal!');
+    break;
+  case 'Dinosaur':
+  default:
+    console.log('This animal will not be on the Ark.');
+}
+
+
+// 15. Array Basics
+// we can store array of arrays. it is multi dimensional
+// to access each element of the array we can use index
+
+var sandwich = ["peanut butter", "jelly", "bread"];
+
+var teams = [["Bulls", 23], ["White Sox", 45]];
+
+console.log(sandwich[0]);
+
+sandwich[1] = "bananas";
+console.log(sandwich);
+
+console.log(teams[1][0]);
+teams[1][0] = "red socks";
+console.log(teams);
+console.log(teams[1][0]);
+
+sandwich.forEach(function(element) {
+    console.log(element);
+});
+
+
+// 16. 10 Common Array Methods
+
+var arr = ["a", "b", "c"];
+
+arr.push("d");
+console.log(arr);
+
+console.log(arr.pop());
+console.log(arr);
+
+var arr2 = ["g", "q"];
+console.log(arr2);
+console.log(arr.concat(arr2));
+
+console.log(arr.join(""));
+console.log(arr.join("!"));
+
+console.log(arr.reverse());
+console.log(arr);
+
+console.log(arr.shift());
+console.log(arr);
+
+console.log(arr.unshift("p"));
+console.log(arr);
+
+console.log(arr.slice(1,3));
+
+arr.push("i");
+arr.push("f");
+console.log(arr);
+arr.sort();
+console.log(arr);
+
+//splice removes values from arrays
+console.log(arr.splice(2, 2, "JS Nuggets")); // first is the starting index, second is the number of items to be removed, third is what needs to be replaced
+console.log(arr);
+
+
+// 17. Copying Arrays
+
+var original = [true, true, undefined, false, null];
+console.log(original)
+
+// slice
+
+var copy1 = original.slice(0);// it copies starting from the index number specified in slice()
+console.log(copy1)
+
+// spread operator
+
+var copy2 = [...original];
+console.log(copy1, copy2);
+
+// DEEP copying
+// it is used for copying multi dimensional arrays
+
+var deepArray = [["Ashik"]];
+var shallowCopy = deepArray.slice(0);
+
+shallowCopy[0].push("is great");// even though we make changes in shallowcopy it is changed in deeparray as well
+console.log(deepArray[0], shallowCopy[0])
+
+var deepCopy = JSON.parse(JSON.stringify(deepArray));
+
+deepCopy[0].push("is great");
+console.log(deepArray[0], deepCopy[0])
+
+
+
+
+
+
