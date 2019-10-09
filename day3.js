@@ -558,6 +558,122 @@ console.log(myObject.hasOwnProperty('valueOf'));
 console.log('valueOf' in myObject);
 
 
+// 34. setTimeout and setInterval
+
+// setTimeout
+var timeoutID = setTimeout(bye, 3000);
+
+console.log('hello');
+
+clearTimeout(timeoutID);
+
+function bye() {
+  console.log('goodbye');
+}
+
+// setInterval
+
+var count = 0
+var intId = setInterval(counter, 1000);
+ 
+function counter() {
+  console.log(++count);
+}
+
+
+// 35. Try, catch, finally 
+
+try {
+  console.log('Start of try runs');
+  
+  unicycle;
+
+  console.log('End of try runs -- never reached'); 
+
+} catch(err) {
+
+  console.log('Error has occured: ' + err); 
+
+} finally {
+  console.log('This is always run'); 
+}
+
+console.log('...Then the execution continues');
+
+
+let json = '{ "age": 30 }';
+ 
+try {
+ 
+  let user = JSON.parse(json); 
+  if (!user.name) {
+    throw new SyntaxError("Incomplete data: no name");
+  }
+ 
+  console.log( user.name );
+ 
+} catch(e) {
+  console.log( "JSON Error: " + e ); 
+}
+
+
+// 36. Dates
+
+var d1 = new Date()
+console.log(d1.toTimeString())
+
+var d2 = new Date(2017, 1, 3, 42, 43, 23, 23)
+console.log(d2.toString())
+
+var d3 = new Date(86400000)
+console.log(d3.toString())
+
+var d3 = new Date(929397621000)
+console.log(d3.toString())
+
+var d4 = new Date("October 13, 2019 11:13:00")
+console.log(d4.toString())
+
+var d4 = new Date("2015-03-25")
+console.log(d4.toString())
+
+var d4 = new Date("2015-03")
+console.log(d4.toString())
+
+var d4 = new Date("2015")
+console.log(d4.toString())
+
+var d4 = new Date("03/25/2015")
+console.log(d4.toString())
+
+var d4 = new Date("Mar 25 2017")
+console.log(d4.toString())
+
+console.log(d4.getDate())
+
+console.log(d4.getDay())
+
+console.log(d4.getMinutes())
+
+d4.setFullYear(2020)
+console.log(d4.toString())
+
+
+var start =  new Date();
+doSomething();
+var end = new Date();
+
+var elapsed =  end.getTime() - start.getTime();
+console.log(elapsed);
+
+function doSomething() {
+  for(var i=0; i < 100000000; i++) {
+
+  }
+};
+
+
+
 
 
 
