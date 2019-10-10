@@ -84,7 +84,7 @@ class Person {
   };
 
 
-  // 3. Symbols
+// 3. Symbols
 
 // Creation
 
@@ -104,6 +104,7 @@ console.log('symbol: ' + symbol1.toString());
 
 
 // Use case 2: constants representing concepts
+
 const COLOR_RED    = Symbol('Red');
 const COLOR_ORANGE = Symbol('Orange');
 const COLOR_YELLOW = Symbol('Yellow');
@@ -129,3 +130,112 @@ function getComplement(color) {
             throw new Exception('Unknown color: '+color);
     }
 }
+
+getComplement(COLOR_RED);
+
+// 4. // 4. Template literals
+
+// multi-line strings
+
+console.log(`string test line 1
+string test line 2`)
+
+console.log(`string test line 1
+
+
+string test line 2`)
+
+// expression interpolation
+
+var a = 5;
+var b= 10;
+console.log(`fifteen is ${a + b} and\nnot ${2 * a + b}.`)
+console.log(`fifteen is ${a + b} and
+not ${2 * a + b}.`)
+
+//tagged template literal
+
+function tag(strings, ...values) {
+  console.log(strings);
+  console.log(values);
+
+  return "Ashik";
+}
+
+tag `Hello ${a+b} world ${a*b}`
+
+function template(strings, ...keys) {
+  console.log(strings);
+  console.log(keys);
+  return (function(...values) {
+    var dict = values[values.length - 1] || {};
+    var result = [strings[0]];
+    keys.forEach(function(key, i) {
+      var value = Number.isInteger(key) ? values[key] : dict[key];
+      result.push(value, strings[i + 1]);
+    });
+    return result.join('');
+  });
+}
+
+var t1Closure = template`${0}${1}${0}!`;
+console.log(t1Closure('Y', 'A'));  // "YAY!"
+var t2Closure = template`${0} ${'foo'}!`;
+console.log(t2Closure('Hello', {foo: 'World'}));  // "Hello World!"
+
+
+// 5. Proxies!
+
+// Syntax: var p = new Proxy(target, handler);
+
+// Example 1
+var handler = {
+  get (target, key) {
+    return key in target ? target[key] : 37;
+    }
+};
+
+//without proxy
+var p = {};
+p.a = 1;
+p.b = undefined;
+
+console.log(p.a, p.b);
+console.log('c' in p, p.c);
+
+//with proxy
+
+var p = new Proxy({}, handler);
+p.a = 1;
+p.b = undefined;
+
+console.log(p.a, p.b);
+console.log('c' in p, p.c);
+
+// Example 2
+let validator = {
+  set: function(obj, prop, value) {
+    if (prop === 'age') {
+      if (typeof value !== 'number' || Number.isNaN(value)) {
+        console.log('Age must be a number')
+      }
+      if (value < 0) {
+        console.log('Age must be a positive number')
+      }
+    }
+
+    obj[prop] = value;
+  
+    return true;
+  }
+};
+
+let person = new Proxy({}, validator);
+person.age = 'young';
+console.log(person.age)
+person.age = -30;
+console.log(person.age)
+person.age = 100;
+console.log(person.age)
+  
+  
