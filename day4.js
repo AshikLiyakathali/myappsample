@@ -238,4 +238,264 @@ console.log(person.age)
 person.age = 100;
 console.log(person.age)
   
-  
+ 
+
+// 6. Spread Operator / Rest Operator
+
+// add the elements of an existing array into a new array
+var certsToAdd = ['Algorithms and Data Structures', 'Front End Libraries']; 
+var certifications = ['Responsive Web Design', ...certsToAdd, 'Data Visualization', 'APIs and Microservices', 'Quality Assurance and Information Security'];
+console.log(certifications);
+
+// pass elements of an array as arguments to a function
+function addThreeNumbers(x, y, z) { 
+	console.log(x+y+z)
+}
+
+var args = [0, 1, 2, 3];
+addThreeNumbers(...args);
+
+// copy arrays
+var arr = [1, 2, 3];
+var arr2 = [...arr]; // like arr.slice()
+arr2.push(4); 
+console.log(arr);
+console.log(arr2);
+
+// concatenate arrays
+var arr1 = [0, 1, 2];
+var arr2 = [3, 4, 5];
+arr1.concat(arr2);
+console.log(arr1.concat(arr2));
+arr1 = [...arr1, "freeCodeCamp", ...arr2];
+console.log(arr1);
+
+// REST: condense multiple elements into an array
+function multiply(multiplier, ...theArgs) {
+  return theArgs.map(function(element) {
+    return multiplier * element;
+  });
+}
+
+var arr = multiply(2, 1, 2, 3); 
+console.log(arr)
+
+
+// 7. Arrow Functions
+
+//Syntax
+//(param1, param2) => { statements };
+//(param1, param2) => expression
+//(param1, param2) => { return expression; };
+
+//(singleParam) => { statements }
+//singleParam => { statements }
+
+//() => { statements }
+//() => expression
+//() => { return expression; };
+
+//(param1, param2, paramN) => expression 
+
+// NORMAL FUNCTION
+
+var multiply = function(x, y) {
+  return x * y;
+}; 
+ 
+// ARROW FUNCTION 
+
+var multiply = (x, y) => { return x * y };
+
+// or
+
+var multiply = (x, y) => x*y;
+// Example
+
+var materials = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
+
+var materialsLength1 = materials.map(function(material) { 
+  return material.length;
+});
+
+var materialsLength2 = materials.map((material) => {
+  return material.length;
+});
+
+var materialsLength3 = materials.map(material => material.length);
+
+// No binding of 'this'
+
+function Person(){
+  this.age = 0;
+
+  setInterval(() => {
+    this.age++; // In a normal function, 'this' refers to global object, here it properly refers to the person object
+    console.log(this.age)
+  }, 3);
+}
+
+var p = new Person();
+
+// Returning object literals
+
+var func = () => ({foo: 1});
+
+// Line breaks
+
+var func = () => 1; 
+
+
+
+// 8. Destructuring
+
+// Assign variables from objects
+var voxel = {x: 3.6, y: 7.4, z: 6.54 };
+
+const {x, y, z} = voxel;
+console.log(x);
+
+const {x : a, y : b, z : c} = voxel;
+console.log(b);
+
+// Assign variables from nested objects
+
+const nest = {
+  start: { x: 5, y: 6},
+  end: { x: 6, y: -9 }
+};
+
+const { start : { x: startX, y: startY }} = nest;
+console.log(startX);
+
+// Assign Variables from Arrays
+
+//const [q,,, r] = [1, 2, 3, 4, 5];
+//console.log(q, r);
+
+// Rest Operator to Reassign Array Elements
+
+const [q, r, ...rest] = [1, 2, 3, 4, 5];
+console.log(q, r);
+console.log(rest);
+
+// Pass an Object as a Function's Parameters
+
+const profileUpdate = ({ name, age }) => {
+  // do something with these variables
+}
+
+
+// 9. Maps
+
+let myMap = function() {
+	this.collection = {};
+	this.count = 0;
+	this.size = function() {
+		return this.count;
+	};
+	this.set = function(key, value) {
+		this.collection[key] = value;
+		this.count++;
+	};
+	this.has = function(key) {
+		return (key in this.collection);
+	};
+	this.get = function(key) {
+		return (key in this.collection) ? this.collection[key] : null;
+	};
+	this.delete = function(key) {
+		if (key in this.collection) {
+			delete this.collection[key];
+			this.count--;
+		}
+	};
+	this.values = function() {
+		let result = new Array();
+		for (let key of Object.keys(this.collection)) {
+			result.push(this.collection[key]);
+		};
+		return (result.length > 0) ? result : null;
+	};
+	this.clear = function() {
+		this.collection = {};
+		this.count = 0;
+	};
+};
+
+let map = new myMap();
+map.set('arms', 2);
+map.set('fingers', 10);
+map.set('eyes', 2);
+map.set('belley button', 1);
+
+console.log(map.get('fingers'));
+console.log(map.size());
+console.log(map.values());
+
+let map2 = new Map();
+map2.has('hands');
+map2.entries();
+
+let keyObj = {},
+    keyFunc = function() {};
+
+map2.set('hello', 'string value');
+map2.set(keyObj, 'obj value');
+map2.set(keyFunc, 'func value');
+map2.set(NaN, 'NaN value')
+
+console.log(map2.size);
+
+console.log(map2.get('hello'));
+console.log(map2.get(keyObj));
+console.log(map2.get(keyFunc));
+console.log(map2.get(NaN));
+
+
+// 10. Import / Export
+
+// NAMED EXPORTS
+
+//------ lib.js ------
+export const sqrt = Math.sqrt;
+export function square(x) {
+    return x * x;
+}
+export function diag(x, y) {
+    return sqrt(square(x) + square(y));
+}
+
+// IMPORT PART OF A MODULE
+
+//------ main.js ------
+import { square, diag } from 'lib';
+console.log(square(11)); 
+console.log(diag(4, 3)); 
+
+// IMPORTING COMPLETE MODULE
+
+//------ main.js ------
+import * as lib from 'lib';
+console.log(lib.square(11));
+console.log(lib.diag(4, 3)); 
+
+
+// IMPORTING WITH MORE CONVENIENT ALIAS
+import {reallyReallyLongModuleMemberName as shortName}
+  from 'my-module';
+
+// SINGLE DEFAULT EXPORT
+
+//------ myFunc.js ------
+export default function () { ··· } // no semicolon!
+
+//------ main1.js ------
+import myFunc from 'myFunc';
+myFunc();
+
